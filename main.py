@@ -2,6 +2,8 @@ import time
 import json
 from flask import Flask, request, render_template, Response, abort
 
+import helper_main as hm
+
 
 app = Flask(__name__)
 
@@ -17,6 +19,20 @@ def health_check_method():
     	"message": "The Brain is functioning well!"
     }
     return Response(json.dumps(response), mimetype='application/json'), 200
+
+
+@app.route('/api/GetClanInfo', methods=['POST'])
+def get_clan_info():
+    """
+    	{
+			"clans": [] # numbers in the list or empty list for all clans
+    	} 
+    :return:
+    """
+    content = request.json
+    response = hm.get_clan_info(content)
+    return Response(json.dumps(response), mimetype='application/json'), 200
+
 
 if __name__ == "__main__":
     # Run Flask App

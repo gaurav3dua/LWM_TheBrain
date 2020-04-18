@@ -45,9 +45,8 @@ def get_clan_info(content):
 			clan_records.append(record)
 		# print(len(clan_records))
 		return clan_records
-	except:
-		print("Unexpected error:", sys.exc_info()[0])
-		raise
+	except Exception as x:
+		return {"message": str(x)}
 
 def environment_var_check(content):
 	"""
@@ -61,5 +60,4 @@ def environment_var_check(content):
 		}
 		return response
 	except:
-		print("Unexpected error:", sys.exc_info()[0])
-		raise
+		return {"message": str(x)}

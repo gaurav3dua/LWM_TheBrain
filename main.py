@@ -21,7 +21,7 @@ def health_check_method():
     return Response(json.dumps(response), mimetype='application/json'), 200
 
 
-@app.route('/api/GetClanInfo', methods=['POST'])
+@app.route('/api/GetClanInfo', methods=['GET', 'POST'])
 def get_clan_info():
     """
     	{

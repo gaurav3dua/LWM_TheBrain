@@ -57,7 +57,7 @@ def environment_var_check(content):
 	try:
 		conn_string = config.get_mongo_connection_string()
 		response = {
-			"MongoString": conn_string
+			"MongoString": "conn_string"
 		}
 		return response
 	except:

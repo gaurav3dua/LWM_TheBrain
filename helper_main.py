@@ -46,5 +46,5 @@ def get_clan_info(content):
 		# print(len(clan_records))
 		return clan_records
 	except:
-		print "Unexpected error:", sys.exc_info()[0]
-    	raise
+		print("Unexpected error:", sys.exc_info()[0])
+		raise

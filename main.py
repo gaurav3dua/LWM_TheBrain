@@ -25,12 +25,25 @@ def health_check_method():
 def get_clan_info():
     """
     	{
-			"clans": [] # numbers in the list or empty list for all clans
+    		"clans": [] # numbers in the list or empty list for all clans
     	} 
     :return:
     """
     content = request.json
     response = hm.get_clan_info(content)
+    return Response(json.dumps(response), mimetype='application/json'), 200
+
+
+@app.route('/api/EnvCheck', methods=['GET'])
+def environment_var_check():
+    """
+        {
+            "clans": [] # numbers in the list or empty list for all clans
+        } 
+    :return:
+    """
+    content = request.json
+    response = hm.environment_var_check(content)
     return Response(json.dumps(response), mimetype='application/json'), 200
 
 

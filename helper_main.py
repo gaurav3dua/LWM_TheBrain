@@ -48,3 +48,18 @@ def get_clan_info(content):
 	except:
 		print("Unexpected error:", sys.exc_info()[0])
 		raise
+
+def environment_var_check(content):
+	"""
+	Provides basic info about all clans
+	"""
+	# print("content:", content)
+	try:
+		conn_string = config.get_mongo_connection_string()
+		response = {
+			"MongoString": conn_string
+		}
+		return response
+	except:
+		print("Unexpected error:", sys.exc_info()[0])
+		raise

@@ -5,7 +5,6 @@ import time
 import json
 import pymongo
 import datetime
-import requests
 from bs4 import BeautifulSoup
 
 LWM_BASE_URL = "https://www.lordswm.com/"

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	 background-color: #b6dfe3;
+}
+ body * {
+	 box-sizing: border-box;
+}
+ .header {
+	 background-color: #327a81;
+	 color: white;
+	 font-size: 1.5em;
+	 padding: 1rem;
+	 text-align: center;
+	 text-transform: uppercase;
+}
+ img {
+	 border-radius: 50%;
+	 height: 60px;
+	 width: 60px;
+}
+ .table-users {
+	 border: 1px solid #327a81;
+	 border-radius: 10px;
+	 box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+	 max-width: calc(100% - 2em);
+	 margin: 1em auto;
+	 overflow: hidden;
+	 width: 800px;
+}
+ table {
+	 width: 100%;
+}
+ table td, table th {
+	 color: #2b686e;
+	 padding: 10px;
+}
+ table td {
+	 text-align: center;
+	 vertical-align: middle;
+}
+ table td:last-child {
+	 font-size: 0.95em;
+	 line-height: 1.4;
+	 text-align: left;
+}
+ table th {
+	 background-color: #daeff1;
+	 font-weight: 300;
+}
+ table tr:nth-child(2n) {
+	 background-color: white;
+}
+ table tr:nth-child(2n+1) {
+	 background-color: #edf7f8;
+}
+
+</style>
+</head>
+<body>
+
+<form action="/api/ViewEventPerformance" method="post">
+    <label for="clans">Clan:</label>&nbsp
+    <select id="clans" name="clan">
+        <option value="1209">#1209 - Any Key</option>
+    </select>
+    <br>
+    <br>
+    <label for="event">Event ID:</label>&nbsp
+    <select id="event" name="event_id">
+        <option value="1001">Rogue Raids</option>
+    </select>
+    <br>
+    <br>
+    Combat Level:&nbsp
+    <input type="radio" id="combat level asc" name="combat_level" value="1">
+        <label for="combat level asc">Ascending</label>
+    <input type="radio" id="combat level desc" name="combat_level" value="-1">
+        <label for="combat level desc">Descending</label>
+    <br>
+    <br>
+    Event Points:&nbsp
+    <input type="radio" id="event points asc" name="clan_points" value="1">
+        <label for="event points asc">Ascending</label>
+    <input type="radio" id="event points desc" name="clan_points" value="-1">
+        <label for="event points desc">Descending</label>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+<br>
+<br>
+Made by <a href="https://www.lordswm.com/pl_info.php?id=5644635">Wonderla</a>
+<br>
+<br>
+Stats will come below:
+</body>
+</html>

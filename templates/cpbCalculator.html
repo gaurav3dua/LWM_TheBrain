@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Cost Per Battle Calculator
+    </title>
+    <link rel="shortcut icon" href="http://dcdn.lordswm.com/hwmicon.ico">
+    <script language="JavaScript">
+<!--
+function cpbCalc() {
+    var currDura, maxDura, tempMaxDura, tempDura, totDura, optDura, gold, wood, ore, mercury, sulphur, crystals, gems;
+    var iniCost, repCost;
+    var smithEffi, smithCharge;
+    var se, sc;
+    var totCostTillNow, costPerBattle = 0, minCPB;
+    var i;
+    var repCount = 1;
+    //Assigning the values
+    currDura = parseInt(document.getElementById("currDura_").value);
+    maxDura = parseInt(document.getElementById("maxDura_").value);
+    repCost = parseInt(document.getElementById("repCost_").value);
+    smithEffi = parseInt(document.getElementById("smithEffi_").value);
+    smithCharge = parseInt(document.getElementById("smithCharge_").value);
+    gold = parseInt(document.getElementById("gold_").value);
+    wood = parseInt(document.getElementById("wood_").value);
+    ore = parseInt(document.getElementById("ore_").value);
+    mercury = parseInt(document.getElementById("mercury_").value);
+    sulphur = parseInt(document.getElementById("sulphur_").value);
+    crystals = parseInt(document.getElementById("crystals_").value);
+    gems = parseInt(document.getElementById("gems_").value);
+
+    iniCost = parseInt(gold + (wood + ore) * 180 + (mercury + sulphur + crystals + gems) * 360);
+    se = smithEffi / 100;
+    sc = smithCharge / 100;
+    tempMaxDura = maxDura;
+    tempDura = currDura;
+    totDura = tempDura;
+    totCostTillNow = iniCost;
+    costPerBattle = totCostTillNow / totDura;
+    minCPB = costPerBattle;
+    optDura = tempMaxDura;
+
+    for(i=1; i<=maxDura; i++)
+    {
+        totCostTillNow += parseFloat(repCost * sc);
+        tempDura = parseInt(tempMaxDura * se);
+        totDura += tempDura;
+        costPerBattle = (totCostTillNow / parseFloat(totDura));
+        tempMaxDura -= 1;
+        if ( minCPB >=  costPerBattle )
+        {
+            minCPB = costPerBattle;
+            optDura = tempMaxDura;
+        }
+    }
+    if (isNaN(currDura) || currDura>maxDura || isNaN(maxDura) || currDura<0) {
+        document.getElementById("result_").textContent = "Sorry! Error in the entered durabilities. Please check then try again";
+    }
+    else {
+        if(isNaN(smithEffi) || (smithEffi!=10 && smithEffi!=20 && smithEffi!=30 && smithEffi!=40 && smithEffi!=50 && smithEffi!=60 && smithEffi!=70 && smithEffi!=80 && smithEffi!=90) ||smithCharge<0) {
+            document.getElementById("result_").textContent = "Sorry! This repairing efficiency is not available in the game, please try again";
+        }
+        else {
+            if(isNaN(gold) || isNaN(wood) || isNaN(ore) || isNaN(mercury) || isNaN(sulphur) || isNaN(crystals) || isNaN(gems) || gold<0 || wood<0 || ore<0 || mercury<0 || sulphur<0 || crystals<0 || gems<0){
+                document.getElementById("result_").textContent = "Error in costs of resources, please check them and try again";
+            }
+            else{
+                document.getElementById("result_").textContent = eval(minCPB.toFixed(2)) + " gold at 0/"+ eval(optDura);
+            }
+
+        }
+    }
+
+    return 0;
+    //alert("minimum cost per battle = " + eval(minCPB) + "at 0/" + eval(optDura));
+//-->
+}
+</script>
+</head>
+
+<style>
+.smaller{
+    width: 50px;
+    padding: 12px 10px;
+    margin: 0px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.bigger{
+    width: 110px;
+    padding: 12px 10px;
+    margin: 0px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button_is{
+    width: 110px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 0px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button_is:hover {
+    background-color: #45a049;
+}
+
+.mydiv{
+    border-radius: 5px;
+    background-color: #badf6f;
+    padding:20px;
+    width: 550px;
+}
+</style>
+
+<body>
+<div class = "mydiv">
+    <!-- <label for="fname" id="fn">First Name</label> -->
+    <!-- <input type="text" id="fname" name="firstname"> -->
+    <!-- <button onclick="myFunction()">Calculate</button> -->
+     <table border="0">
+        <tr>
+             <td>
+                <center><img src="http://trial.6te.net/images/gold.gif"></img></center>
+            </td>
+            <td>
+                <center><img src="http://trial.6te.net/images/wood_s.gif"></img></center>
+            </td>
+            <td>
+                <center><img src="http://trial.6te.net/images/ore_s.gif"></img></center>
+            </td>
+            <td>
+                <center><img src="http://trial.6te.net/images/mercury_s.gif"></img></center>
+            </td>
+            <td>
+                <center><img src="http://trial.6te.net/images/sulphur_S.gif"></img></center>
+            </td>
+            <td>
+                <center><img src="http://trial.6te.net/images/crystal_S.gif"></img></center>
+            </td>
+            <td>
+                <center><img src="http://trial.6te.net/images/gems_S.gif"></img></center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="gold_" name="Gold" class="bigger" value="0">
+            </td>
+            <td>
+                <input type="text" id="wood_" name="Wood" class="smaller" value="0">
+            </td>
+            <td>
+                <input type="text" id="ore_" name="Ore" class="smaller" value="0">
+            </td>
+            <td>
+                <input type="text" id="mercury_" name="Mercury" class="smaller" value="0">
+            </td>
+            <td>
+                <input type="text" id="sulphur_" name="Sulphur" class="smaller" value="0">
+            </td>
+            <td>
+                <input type="text" id="crystals_" name="Crystals" class="smaller" value="0">
+            </td>
+            <td>
+                <input type="text" id="gems_" name="Gems" class="smaller" value="0">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                Durability :<br>
+                <input type="text" id="currDura_" name="Current_Durability" class="smaller" value="0">  /
+                <input type="text" id="maxDura_" name="Maximum_Durability" class="smaller" value="0">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                Repair Cost :<br>
+                <input type="text" id="repCost_" name="Repair_Cost" class="bigger" value="0">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                Smith Efficiency (%):<br>
+                <input type="text" id="smithEffi_" name="Smith_Efficiency" class="smaller" value="90">%
+            </td>
+            <td colspan="3">
+                Smith Charges (%) :<br>
+                <input type="text" id="smithCharge_" name="Smith_Charge" class="smaller" value="100">%
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <center><input type="button" value="Calculate" name="Calc_Button" onclick="cpbCalc()" class="button_is"></center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <label id="result_"></label>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

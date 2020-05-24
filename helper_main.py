@@ -82,6 +82,7 @@ def view_clan_event_data(content):
 	event_id = content.get("event_id", 1001)
 	clan_points = content.get("clan_points", None)
 	combat_level = content.get("combat_level", None)
+	language = content.get("language", "eng")
 
 	if isinstance(clans, str):
 		clan_list = [int(clans)]
@@ -108,17 +109,29 @@ def view_clan_event_data(content):
 		sorting_fields=sorting
 	)
 
-	with open(os.path.join("templates", "eventPerformance.html")) as f:
+	with open(os.path.join("templates", "eventPerformance.html"), 'r', encoding='utf-8') as f:
 		html_page = f.read()
-	table_header = """<tr><th><b>Player</b></th><th><b>Combat level</b></th><th><b>Clan Points</b></th></tr>"""
+
+	if language.lower() == "rus":
+		columns = ["герой", "Боевой уровень", "Клановые очки"]
+	else:
+		columns = ["Player", "Combat level", "Clan Points"]
+	table_header = "<tr><th><b>" \
+		+ columns[0] + "</b></th><th><b>" \
+		+ columns[1] + "</b></th><th><b>" \
+		+ columns[2] + "</b></th></tr>"
 	table_rows = ""
 	for i in records_fetched:
+		if language.lower() == "rus":
+			player_url = lh.HWM_BASE_URL + lh.PLAYER_PAGE + "?id=" + str(i["player_id"])
+		else:
+			player_url = lh.LWM_BASE_URL + lh.PLAYER_PAGE + "?id=" + str(i["player_id"])
 		table_rows = table_rows + "<tr><td><a href=\"" \
-					+ lh.LWM_BASE_URL + lh.PLAYER_PAGE + "?id=" + str(i["player_id"]) + "\">"\
-					+ str(i["player_name"]) + "</a></td><td>" \
-					+ str(i["combat_level"]) + "</td><td>" \
-					+ str(i["clan_points"]) \
-					+ "</td></tr>"
+			+ player_url + "\">"\
+			+ str(i["player_name"]) + "</a></td><td>" \
+			+ str(i["combat_level"]) + "</td><td>" \
+			+ str(i["clan_points"]) \
+			+ "</td></tr>"
 
 	table = "<div class=\"table-users\"><div class=\"header\">Players</div><table>" \
 		+ table_header \
@@ -126,4 +139,13 @@ def view_clan_event_data(content):
 
 	# return_page = "<html><body>" + table + "</body></html>"
 	return_page = html_page.replace("Stats will come below:", table)
+	if language.lower() == "rus":
+		return_page = return_page.replace(
+			"""<input type="radio" id="eng" name="language" value="eng" checked>""",
+			"""<input type="radio" id="eng" name="language" value="eng">"""
+		)
+		return_page = return_page.replace(
+			"""<input type="radio" id="rus" name="language" value="rus">""",
+			"""<input type="radio" id="rus" name="language" value="rus" checked>"""
+		)
 	return return_page

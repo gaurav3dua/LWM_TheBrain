@@ -36,15 +36,16 @@ body {
  table td, table th {
 	 color: #2b686e;
 	 padding: 10px;
+	 text-align:center;
 }
  table td {
 	 text-align: center;
 	 vertical-align: middle;
 }
  table td:last-child {
+     text-align:center;
 	 font-size: 0.95em;
 	 line-height: 1.4;
-	 text-align: left;
 }
  table th {
 	 background-color: #daeff1;
@@ -52,9 +53,11 @@ body {
 }
  table tr:nth-child(2n) {
 	 background-color: white;
+	 text-align:center;
 }
  table tr:nth-child(2n+1) {
 	 background-color: #edf7f8;
+	 text-align:center;
 }
 
 </style>
@@ -62,30 +65,37 @@ body {
 <body>
 
 <form action="/api/ViewEventPerformance" method="post">
-    <label for="clans">Clan:</label>&nbsp
+    <label for="clans">Clan (клан):</label>&nbsp
     <select id="clans" name="clan">
         <option value="1209">#1209 - Any Key</option>
     </select>
     <br>
     <br>
-    <label for="event">Event ID:</label>&nbsp
+    <label for="event">Event (Событие):</label>&nbsp
     <select id="event" name="event_id">
-        <option value="1001">Rogue Raids</option>
+        <option value="1001">Rogue Raids - Разбойные нападения</option>
     </select>
     <br>
     <br>
-    Combat Level:&nbsp
+    Combat Level (Боевой уровень):&nbsp
     <input type="radio" id="combat level asc" name="combat_level" value="1">
-        <label for="combat level asc">Ascending</label>
+        <label for="combat level asc">Ascending (Восходящий)</label>
     <input type="radio" id="combat level desc" name="combat_level" value="-1">
-        <label for="combat level desc">Descending</label>
+        <label for="combat level desc">Descending (По убыванию)</label>
     <br>
     <br>
-    Event Points:&nbsp
+    Clan Points (Клановые очки):&nbsp
     <input type="radio" id="event points asc" name="clan_points" value="1">
-        <label for="event points asc">Ascending</label>
+        <label for="event points asc">Ascending (Восходящий)</label>
     <input type="radio" id="event points desc" name="clan_points" value="-1">
-        <label for="event points desc">Descending</label>
+        <label for="event points desc">Descending (По убыванию)</label>
+    <br>
+    <br>
+    Language:&nbsp
+    <input type="radio" id="eng" name="language" value="eng" checked>
+        <label for="eng">English</label>
+    <input type="radio" id="rus" name="language" value="rus">
+        <label for="rus">русский</label>
     <br>
     <br>
     <input type="submit" value="Submit">

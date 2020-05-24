@@ -8,6 +8,7 @@ import datetime
 from bs4 import BeautifulSoup
 
 LWM_BASE_URL = "https://www.lordswm.com/"
+HWM_BASE_URL = "https://www.heroeswm.ru/"
 LOGIN_URL = "login.php"
 CLAN_PAGE = "clan_info.php"#
 CLAN_LOG_PAGE = "clan_log.php"#
